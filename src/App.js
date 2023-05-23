@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import TaskCreator from './components/TaskCreator';
+import TaskDisplay from './components/TaskDisplay';
+import { useState } from 'react';
 
-function App() {
+function App() 
+{
+  // Helps to change the todos when you create a new todo
+  const [newTodo, setNewTodo] = useState("");
+  const [todos, setTodos] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex h-[100vh]">
+
+      <TaskCreator props={{setNewTodo, newTodo, todos, setTodos}} />
+      <TaskDisplay props={{setNewTodo, newTodo, todos, setTodos}} />
+
     </div>
   );
 }
